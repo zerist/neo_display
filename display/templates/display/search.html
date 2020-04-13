@@ -7,7 +7,7 @@
 <body>
 <ul>
     {% for node in nodes  %}
-        <li>id:{{ node.code }}  name:{{ node.name }}</li>
+        <li><a href="{% url 'display:detail' node.code %}">id:{{ node.code }}  name:{{ node.name }}</a></li>
     {% endfor %}
 </ul>
 </body>

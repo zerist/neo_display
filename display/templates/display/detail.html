@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js"></script>
+
+    <style type="text/css">
+        #container {
+            position: relative;
+        }
+
+        .node {
+            background-color: red;
+            position: relative;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            left: 20%;
+            top: auto;
+            text-align: center;
+            line-height: 150px;
+        }
+
+        .node p {
+            text-align: center;
+            color: white;
+        }
+
+        #nodelist {
+            position: relative;
+            left: 500px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <!--
+        TODO
+        SVG here
+    -->
+    <div class="node">
+        <p>{{ node.name }}</p>
+
+    </div>
+    <ul id="nodelist"></ul>
+
+</div>
+
+<script type="text/javascript">
+    function createCircle(elem){
+        var circle = $("<div class='node'></div>").text('ter');
+        circle.css({
+            'background-color': 'red',
+            'position': 'relative',
+            'align-content': 'center',
+            'border-radius': '50%',
+            'width': '150px',
+            'height': '150px',
+            'margin': '200px',
+        });
+        $(elem).after(circle)
+    }
+
+
+    $(".node").click(function () {
+        var cur_elem = this;
+        $.get("{% url 'display:nearNode' node.code level %}", function(res){
+            //createCircle(cur_elem)
+            data = eval('(' + res + ')');
+            for (var i=0; i<data.length; i++){
+                var e = $('<li><a href="/display/detail/'+ data[i]['code'] + '">' + data[i]['name'] +'</a></li>');
+                $("#nodelist").append(e);
+            }
+        });
+    })
+</script>
+</body>
+</html>
