@@ -25,7 +25,17 @@
                 <div class="input-group">
                     <input type="text" class="form-control" id="search_input" placeholder="Search for...">
                     <span class="input-group-btn">
-                        <button class="btn btn-primary" id="search_button" type="button">Search!</button>
+                          <button type="button" class="btn btn-primary" id="search_button">Search!(By Name)</button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span class="caret"></span>
+                              <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">By Name</a></li>
+                              <li><a href="#">By Category</a></li>
+                              <li><a href="#">By info</a></li>
+                              <li><a href="#">By Source</a></li>
+                          </ul>
                     </span>
                 </div>
             </div>

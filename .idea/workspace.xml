@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6892261f-b82d-4526-ae23-7ed60d796311" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/display/templates/display/node.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/neo_display.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/neo_display.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/display/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/display/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/display/templates/display/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/display/templates/display/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/display/templates/display/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/display/templates/display/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/display/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/display/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="217">
@@ -85,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/display/templates/display/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-98">
-              <caret line="2" selection-start-line="2" selection-end-line="11" />
+            <state relative-caret-position="177">
+              <caret line="30" column="74" lean-forward="true" selection-start-line="30" selection-start-column="74" selection-end-line="30" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -125,11 +119,11 @@
         <option value="$PROJECT_DIR$/display/urls.py" />
         <option value="$PROJECT_DIR$/display/templates/display/detail.html" />
         <option value="$PROJECT_DIR$/neo_display/settings.py" />
-        <option value="$PROJECT_DIR$/display/templates/display/test.html" />
         <option value="$PROJECT_DIR$/display/templates/display/search.html" />
         <option value="$PROJECT_DIR$/display/models.py" />
         <option value="$PROJECT_DIR$/display/views.py" />
         <option value="$PROJECT_DIR$/display/templates/display/node.html" />
+        <option value="$PROJECT_DIR$/display/templates/display/test.html" />
       </list>
     </option>
   </component>
@@ -254,12 +248,12 @@
       <workItem from="1586769319562" duration="12832000" />
       <workItem from="1586791212557" duration="837000" />
       <workItem from="1587326727907" duration="1192000" />
-      <workItem from="1587359197283" duration="7605000" />
+      <workItem from="1587359197283" duration="9056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38836000" />
+    <option name="totallyTimeSpent" value="40287000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -343,13 +337,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/display/templates/display/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-98">
-          <caret line="2" selection-start-line="2" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/display/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -398,6 +385,13 @@
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/display/templates/display/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="30" column="74" lean-forward="true" selection-start-line="30" selection-start-column="74" selection-end-line="30" selection-end-column="74" />
         </state>
       </provider>
     </entry>
