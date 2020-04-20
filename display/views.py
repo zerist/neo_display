@@ -9,8 +9,13 @@ def index(request):
 
 def test(request):
     rst = models.getTestData()
+    db = models.getDbConfig()
     context = {
-        "nodes_count": len(rst)
+        "nodes_count": len(rst),
+        "db_version": db.product,
+        "create_time": db.store_creation_time,
+        "time_zone": db.config['dbms.logs.timezone'],
+        "thread_count": db.config['dbms.threads.worker_count']
     }
 
     return render(request, "display/test.html", context)
@@ -30,7 +35,7 @@ def detail(request, code):
         'node': node,
         'level': 1
     }
-    return render(request, 'display/detail.html', context)
+    return render(request, 'display/node.html', context)
 
 def nearNode(request, code, level=1):
     data = models.getNearNodes(code)
