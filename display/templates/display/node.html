@@ -17,11 +17,11 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-16">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Key</th>
+                        <th width="100px">Key</th>
                         <th>Value</th>
                     </tr>
                 </thead>
@@ -50,6 +50,12 @@
                         <td>info3</td>
                         <td>{{ node.info3 }}</td>
                     </tr>
+                    {% for near_node in near_nodes %}
+                    <tr>
+                        <td>相邻节点{{ forloop.counter }}</td>
+                        <td><a href="{% url 'display:detail' near_node.name %}">{{ near_node.name }}</a></td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

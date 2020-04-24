@@ -20,6 +20,13 @@ def searchNodeByCode(code):
     data = matcher.match("plant", name=code).first()
     return data
 
+#get near nodes by relation
+#Database: first
 def getNearNodes(code):
     data = graph.run("match (n:animal)-[r:属于]->(d:animal) where d.code='" + code + "' return n,r,d").data()
+    return data
+
+#Database: second
+def getNearNodesByCategory(category):
+    data = matcher.match("plant", category=category)
     return data
