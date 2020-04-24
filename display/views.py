@@ -60,3 +60,7 @@ def nearNode(request, code, level=1):
 def nearNodeByCategory(request, category):
     data = models.getNearNodesByCategory(category)
     return HttpResponse(json.dumps(data))
+
+
+def svgMode(request):
+    return render(request, 'display/svg_l.html', {})

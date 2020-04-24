@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6892261f-b82d-4526-ae23-7ed60d796311" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/display/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/display/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/display/templates/display/node.html" beforeDir="false" afterPath="$PROJECT_DIR$/display/templates/display/node.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/display/templates/display/svg_l.html" beforeDir="false" afterPath="$PROJECT_DIR$/display/templates/display/svg_l.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/display/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/display/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/display/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/display/views.py" afterDir="false" />
     </list>
@@ -22,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+            <state relative-caret-position="311">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -34,16 +33,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display/templates/display/svg_l.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+            <state relative-caret-position="69">
+              <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/display/templates/display/node.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
+            <state relative-caret-position="529">
               <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
             </state>
           </provider>
@@ -58,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/display/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+            <state relative-caret-position="46">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -132,11 +131,11 @@
         <option value="$PROJECT_DIR$/neo_display/settings.py" />
         <option value="$PROJECT_DIR$/display/templates/display/search.html" />
         <option value="$PROJECT_DIR$/display/templates/display/test.html" />
-        <option value="$PROJECT_DIR$/display/templates/display/svg_l.html" />
         <option value="$PROJECT_DIR$/display/models.py" />
-        <option value="$PROJECT_DIR$/display/urls.py" />
-        <option value="$PROJECT_DIR$/display/views.py" />
         <option value="$PROJECT_DIR$/display/templates/display/node.html" />
+        <option value="$PROJECT_DIR$/display/templates/display/svg_l.html" />
+        <option value="$PROJECT_DIR$/display/views.py" />
+        <option value="$PROJECT_DIR$/display/urls.py" />
       </list>
     </option>
   </component>
@@ -147,8 +146,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="542" />
-    <option name="y" value="6" />
+    <option name="x" value="262" />
+    <option name="y" value="35" />
     <option name="width" value="1362" />
     <option name="height" value="919" />
   </component>
@@ -263,12 +262,12 @@
       <workItem from="1587326727907" duration="1192000" />
       <workItem from="1587359197283" duration="10022000" />
       <workItem from="1587477856935" duration="1260000" />
-      <workItem from="1587689401050" duration="4099000" />
+      <workItem from="1587689401050" duration="5050000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46612000" />
+    <option name="totallyTimeSpent" value="47563000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -280,8 +279,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="542" y="6" width="1362" height="919" extended-state="0" />
-    <editor active="true" />
+    <frame x="262" y="35" width="1362" height="919" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23195085" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -359,13 +357,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/display/templates/display/svg_l.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/display/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
@@ -383,16 +374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/display/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/display/templates/display/search.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -400,20 +381,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/display/templates/display/node.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/display/templates/display/svg_l.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/display/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+        <state relative-caret-position="311">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/display/templates/display/node.html">
+    <entry file="file://$PROJECT_DIR$/display/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+        <state relative-caret-position="46">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
