@@ -5,8 +5,263 @@
     <title>Title</title>
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800", height="800">
-    <circle cx="100" cy="100" r="50" stroke="black" stroke-width="2" fill="red"></circle>
-</svg>
+{#<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1600" height="1200">#}
+{#    <circle cx="800" cy="600" r="60" stroke="black" stroke-width="2" fill="red"></circle>#}
+{#    <text x="650" y="600" fill="black">{{ node.category }}</text>#}
+{#</svg>#}
+<script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
+
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<script>
+    var width = 1600;
+    var height = 1200;
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var marge = {top: 10, bottom: 10, left: 10, right: 10}
+    var g = svg.append("g")
+        .attr("transform", "translate(" + marge.top + "," + marge.left + ")");
+
+    //准备数据
+    var nodes = [
+        {name: "{{ node.category }}", group: 4.5, name1: "{{ node.name1 }}"}
+    ];
+
+    var near_nodes = {{ near_nodes | safe }};
+    for (var i = 0; i < near_nodes.length; i++) {
+        nodes.push({
+            name: near_nodes[i]['name'],
+            group: 3,
+            code: near_nodes[i]['code']
+        })
+    }
+
+    var edges = [];
+    for (i = 1; i < nodes.length; i++) {
+        edges.push({
+            source: 0,
+            target: i,
+            value: 4
+        })
+    }
+
+    //设置一个color的颜色比例尺，为了让不同的扇形呈现不同的颜色
+    var colorScale = d3.scaleOrdinal()
+        .domain(d3.range(nodes.length))
+        .range(d3.schemeCategory10);
+
+
+    var forceSimulation = d3.forceSimulation()
+        .force("link", d3.forceLink())
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter());
+    //生成节点数据
+    forceSimulation.nodes(nodes)
+        .on("tick", ticked);//这个函数很重要，后面给出具体实现和说明
+    //生成边数据
+    forceSimulation.force("link")
+        .links(edges)
+        .distance(function (d) {//每一边的长度
+            return d.value * 100;
+        });
+    //设置图形的中心位置
+    forceSimulation.force("center")
+        .x(width / 2)
+        .y(height / 2);
+    //在浏览器的控制台输出
+    console.log(nodes);
+    console.log(edges);
+    //绘制边
+    var links = g.append("g")
+        .selectAll("line")
+        .data(edges)
+        .enter()
+        .append("line")
+        .attr("stroke", function (d, i) {
+            return colorScale(d.value);   //边的颜色
+            //return "#ccc";
+        })
+        .attr("stroke-width", 1);
+    //边上文字
+    var linksText = g.append("g")
+        .selectAll("text")
+        .data(edges)
+        .enter()
+        .append("text")
+        .text(function (d) {
+            return d.relation;
+        });
+    //建立用来放在每个节点和对应文字的分组<g>
+    var gs = g.selectAll(".circleText")
+        .data(nodes)
+        .enter()
+        .append("g")
+        .attr("transform", function (d, i) {
+            var cirX = d.x;
+            var cirY = d.y;
+            return "translate(" + cirX + "," + cirY + ")";
+        })
+        .call(d3.drag()
+            .on("start", started)
+            .on("drag", dragged)
+            .on("end", ended)
+        );
+
+    //绘制节点
+    gs.append("circle")
+    // .attr("r",20)
+        .attr("r", function (d, i) {    //圆圈半径
+            return d.group * 15;
+        })
+        .attr("fill", function (d, i) {
+            //return colorScale(i);
+            return colorScale(d.group);
+        }).attr("data-target", function (d) {
+        return "#" + d.code;
+    });
+    //文字
+    gs.append("text")
+    /*.attr("x",-10)
+    .attr("y",-20)
+    .attr("dy",10)*/
+        .attr("x", -25)
+        .attr("y", -5)
+        .attr("dy", 10)
+        .text(function (d) {
+            return d.name;
+        });
+
+    function ticked() {
+        links
+            .attr("x1", function (d) {
+                return d.source.x;
+            })
+            .attr("y1", function (d) {
+                return d.source.y;
+            })
+            .attr("x2", function (d) {
+                return d.target.x;
+            })
+            .attr("y2", function (d) {
+                return d.target.y;
+            });
+
+        linksText
+            .attr("x", function (d) {
+                return (d.source.x + d.target.x) / 2;
+            })
+            .attr("y", function (d) {
+                return (d.source.y + d.target.y) / 2;
+            });
+
+        gs
+            .attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
+    }
+
+    //drag
+    function started(d) {
+        if (!d3.event.active) {
+            forceSimulation.alphaTarget(0.8).restart();//设置衰减系数，对节点位置移动过程的模拟，数值越高移动越快，数值范围[0，1]
+        }
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+    }
+
+    function ended(d) {
+        if (!d3.event.active) {
+            forceSimulation.alphaTarget(0);
+        }
+        d.fx = null;
+        d.fy = null;
+    }
+</script>
+<script type="text/javascript">
+
+    var elems = $("circle[r='45']")
+        .attr("type", "buttton")
+        .attr("class", "btn btn-lg")
+        .attr("data-toggle", "modal");
+    /*
+    for(var i=0; i<elems.length; i++){
+        var text = $(elems[i]).next().text().split("|")[1].replace(' ', '');
+        $(elems[i]).attr("data-target", text);
+    }
+    */
+
+</script>
+{% for node in data %}
+    <div class="modal fade" id="{{ node.code }}" tabindex="-1" role="dialog" aria-labelledby="{{ node.code }}label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="{{ node.code }}label">{{ node.name }}</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th width="100px">Key</th>
+                            <th>Value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>英文名</td>
+                            <td>{{ node.name1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>学名</td>
+                            <td>{{ node.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>种类</td>
+                            <td>{{ node.category }}</td>
+                        </tr>
+                        <tr>
+                            <td>info1</td>
+                            <td>{{ node.info1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>info2</td>
+                            <td>{{ node.info2 }}</td>
+                        </tr>
+                        <tr>
+                            <td>info3</td>
+                            <td>{{ node.info3 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 </body>
 </html>

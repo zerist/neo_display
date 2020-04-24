@@ -45,6 +45,11 @@ def detail(request, code):
     return render(request, 'display/node.html', context)
 
 
+def getNodeJSON(request, name):
+    node = models.searchNodeByCode(name)
+    return HttpResponse(json.dumps(node))
+
+
 # By Code
 # Database: first
 def nearNode(request, code, level=1):
@@ -62,5 +67,18 @@ def nearNodeByCategory(request, category):
     return HttpResponse(json.dumps(data))
 
 
-def svgMode(request):
-    return render(request, 'display/svg_l.html', {})
+def svgMode(request, code):
+    node = models.searchNodeByCode(code)
+    if not node:
+        raise Http404("Node not found!")
+
+    # 相邻节点 by category
+    near_nodes = list(models.getNearNodesByCategory(node['category']))
+    for i in near_nodes:
+        i['code'] = i.identity
+    context = {
+        'node': node,
+        'near_nodes': json.dumps(near_nodes),
+        'data': near_nodes
+    }
+    return render(request, 'display/svg_l.html', context)

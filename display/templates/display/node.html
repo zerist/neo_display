@@ -13,8 +13,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Node</title>
+
+    <style type="text/css">
+
+        #side-bar {
+            width: 100px;
+            height: 100px;
+            background: lightskyblue;
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+
+        #side-bar p{
+            color: whitesmoke;
+            font-size: 17px;
+        }
+    </style>
 </head>
 <body>
+<div id="side-bar">
+    <p>svg图模式</p>
+</div>
+
+<script type="text/javascript">
+    $('#side-bar').click(function () {
+        window.location.href = "{% url 'display:svgMode' node.name%}";
+    });
+
+    $('#side-bar').mouseover(function () {
+       $('#side-bar').css("background", "cadetblue") ;
+    });
+
+    $('#side-bar').mouseout(function () {
+       $('#side-bar').css("background", "lightskyblue") ;
+    });
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-16">
