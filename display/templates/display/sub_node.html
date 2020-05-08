@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>svg</title>
+    <title>Sub Node</title>
 </head>
 <body>
 {#<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1600" height="1200">#}
@@ -38,11 +38,11 @@
         .attr("transform", "translate(" + marge.top + "," + marge.left + ")");
 
     //准备数据
-    var nodes = [
-        {name: "{{ node.belong }}", group: 4.5, name_cn: "{{ node.name_cn }}"}
-    ];
-
     var near_nodes = {{ near_nodes | safe }};
+
+    var nodes = [
+        {name: "{{ center_node.name }}", group: 4.5, name_cn: "{{ node.name_cn }}"},
+    ];
     for (var i = 0; i < near_nodes.length; i++) {
         nodes.push({
             name: near_nodes[i]['name'],
@@ -84,8 +84,7 @@
         .x(width / 2)
         .y(height / 2);
     //在浏览器的控制台输出
-    console.log(nodes);
-    console.log(edges);
+    console.log(near_nodes);
     //绘制边
     var links = g.append("g")
         .selectAll("line")
@@ -218,7 +217,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="{{ node.code }}label">{{ node.name }}</h4>
+                    <h4 class="modal-title" id="{{ node.code }}label">子节点</h4>
                 </div>
                 <div class="modal-body">
                     <table class="table">
@@ -230,47 +229,22 @@
                         </thead>
                         <tbody>
                         <tr>
-                        <td>英文名</td>
-                        <td>{{ node.name_en }}</td>
+                            <td>old</td>
+                            <td>{{ node.old }}</td>
                         </tr>
                         <tr>
-                            <td>中文名</td>
-                            <td>{{ node.name_cn }}</td>
+                            <td>length</td>
+                            <td>{{ node.length }}</td>
                         </tr>
                         <tr>
-                            <td>学名</td>
-                            <td>{{ node.name }}</td>
-                        </tr>
-                        <tr>
-                            <td>种类</td>
-                            <td>{{ node.belong }}</td>
-                        </tr>
-                        <tr>
-                            <td>环境</td>
-                            <td>{{ node.environment }}</td>
-                        </tr>
-                        <tr>
-                            <td>外形</td>
-                            <td>{{ node.shape }}</td>
-                        </tr>
-                        <tr>
-                            <td>分布位置</td>
-                            <td>{{ node.position }}</td>
-                        </tr>
-                        <tr>
-                            <td>行为</td>
-                            <td>{{ node.behavior }}</td>
-                        </tr>
-                        <tr>
-                            <td>有关文档</td>
-                            <td>{{ node.document }}</td>
+                            <td>color</td>
+                            <td>{{ node.color }}</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a class="btn btn-primary" href={% url 'display:subNode' node.name %}>子节点</a>
                 </div>
             </div>
         </div>

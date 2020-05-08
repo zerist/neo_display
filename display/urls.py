@@ -10,5 +10,6 @@ urlpatterns = [
     path('nearNode/<str:code>/<int:level>', views.nearNode, name='nearNode'),
     path('nearNodeByCategory/<str:category>', views.nearNodeByCategory, name='nearNodeByCategory'),
     path('svgMode/<str:code>', views.svgMode, name='svgMode'),
-    path('nodeJSON/<str:name>', views.getNodeJSON, name='nodeJSON')
+    path('nodeJSON/<str:name>', views.getNodeJSON, name='nodeJSON'),
+    path('subNode/<str:name>', views.subNode, name='subNode')
 ]

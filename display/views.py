@@ -82,3 +82,23 @@ def svgMode(request, code):
         'data': near_nodes
     }
     return render(request, 'display/svg_l.html', context)
+
+
+def subNode(request, name):
+    data = models.getSubNodesByName(name)
+    near_nodes = []
+    for i in data:
+        near_nodes.append(i['d'])
+    for i in near_nodes:
+        i['code'] = i.identity
+        i['name'] = i.labels.__str__()
+        if i['time']:
+            i['length'] = i['time']
+
+    print(near_nodes)
+    context = {
+        "center_node": data[0]['n'],
+        "near_nodes": json.dumps(near_nodes),
+        "data": near_nodes
+    }
+    return render(request, 'display/sub_node.html', context)
