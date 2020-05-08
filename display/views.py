@@ -36,7 +36,7 @@ def detail(request, code):
         raise Http404("Node not found!")
 
     #相邻节点 by category
-    near_nodes = list(models.getNearNodesByCategory(node['category']))
+    near_nodes = list(models.getNearNodesByBelong(node['belong']))
     context = {
         'node': node,
         'level': 1,
@@ -60,8 +60,8 @@ def nearNode(request, code, level=1):
     return HttpResponse(json.dumps(rst))
 
 
-# by category
-# database: second
+# by belong
+# database: third
 def nearNodeByCategory(request, category):
     data = models.getNearNodesByCategory(category)
     return HttpResponse(json.dumps(data))
@@ -73,7 +73,7 @@ def svgMode(request, code):
         raise Http404("Node not found!")
 
     # 相邻节点 by category
-    near_nodes = list(models.getNearNodesByCategory(node['category']))
+    near_nodes = list(models.getNearNodesByBelong(node['belong']))
     for i in near_nodes:
         i['code'] = i.identity
     context = {

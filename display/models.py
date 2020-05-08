@@ -30,3 +30,13 @@ def getNearNodes(code):
 def getNearNodesByCategory(category):
     data = matcher.match("plant", category=category)
     return data
+
+#Database: third
+def getNearNodesByBelong(belong):
+    data = matcher.match("plant", belong=belong)
+    return data
+
+#Database: third
+def getSubNodesByName(name):
+    data = graph.run("match (n:plant)-[r:has]->(d) where n.name='"+ name +"' return n,r,d").data()
+    return data

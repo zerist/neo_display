@@ -230,8 +230,12 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>英文名</td>
-                            <td>{{ node.name1 }}</td>
+                        <td>英文名</td>
+                        <td>{{ node.name_en }}</td>
+                        </tr>
+                        <tr>
+                            <td>中文名</td>
+                            <td>{{ node.name_cn }}</td>
                         </tr>
                         <tr>
                             <td>学名</td>
@@ -239,19 +243,27 @@
                         </tr>
                         <tr>
                             <td>种类</td>
-                            <td>{{ node.category }}</td>
+                            <td>{{ node.belong }}</td>
                         </tr>
                         <tr>
-                            <td>info1</td>
-                            <td>{{ node.info1 }}</td>
+                            <td>环境</td>
+                            <td>{{ node.environment }}</td>
                         </tr>
                         <tr>
-                            <td>info2</td>
-                            <td>{{ node.info2 }}</td>
+                            <td>外形</td>
+                            <td>{{ node.shape }}</td>
                         </tr>
                         <tr>
-                            <td>info3</td>
-                            <td>{{ node.info3 }}</td>
+                            <td>分布位置</td>
+                            <td>{{ node.position }}</td>
+                        </tr>
+                        <tr>
+                            <td>行为</td>
+                            <td>{{ node.behavior }}</td>
+                        </tr>
+                        <tr>
+                            <td>有关文档</td>
+                            <td>{{ node.document }}</td>
                         </tr>
                         </tbody>
                     </table>

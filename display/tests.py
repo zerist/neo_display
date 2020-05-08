@@ -142,6 +142,6 @@ def searchNodesByName(name):
 # #
 # # test_delete_node(1000)
 # # test_delete_batch_node(1000)
-category = "裸子植物门|Gymnospermae 松科|Pinaceae 冷杉属|Abies"
-a = getNearNodesByCategory(category)
-b = searchNodesByName("松")
+# category = "裸子植物门|Gymnospermae 松科|Pinaceae 冷杉属|Abies"
+# a = getNearNodesByCategory(category)
+# b = searchNodesByName("松")

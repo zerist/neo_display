@@ -22,7 +22,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Category</th>
+                        <th>Belong</th>
                         <th>Name</th>
                     </tr>
                 </thead>
@@ -30,7 +30,7 @@
                     {% for node in nodes  %}
                         <tr>
                             <th scope="row">{{ forloop.counter }}</th>
-                            <td>{{ node.category }}</td>
+                            <td>{{ node.belong }}</td>
                             <td><a href="{% url 'display:detail' node.name %}">{{ node.name }}</a></td>
                         </tr>
                     {% endfor %}
