@@ -2,12 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from . import models
 import json
+from django.views.decorators.cache import cache_page,cache_control
 
 # Create your views here.
 def index(request):
     return HttpResponse("Hello world")
 
 
+@cache_control(public=True)
 def test(request):
     rst = models.getTestData()
     db = models.getDbConfig()
@@ -21,7 +23,8 @@ def test(request):
 
     return render(request, "display/test.html", context)
 
-
+@cache_page(60 * 15)
+@cache_control(private=True)
 def search(request, text):
     nodes = list(models.searchNodesByName(text))
     context = {
@@ -29,7 +32,7 @@ def search(request, text):
     }
     return render(request, "display/search.html", context)
 
-
+@cache_page(60 * 15)
 def detail(request, code):
     node = models.searchNodeByCode(code)
     if not node:
@@ -44,7 +47,7 @@ def detail(request, code):
     }
     return render(request, 'display/node.html', context)
 
-
+@cache_page(60 * 15)
 def getNodeJSON(request, name):
     node = models.searchNodeByCode(name)
     return HttpResponse(json.dumps(node))
@@ -62,11 +65,12 @@ def nearNode(request, code, level=1):
 
 # by belong
 # database: third
+@cache_page(60 * 15)
 def nearNodeByCategory(request, category):
     data = models.getNearNodesByCategory(category)
     return HttpResponse(json.dumps(data))
 
-
+@cache_page(60 * 15)
 def svgMode(request, code):
     node = models.searchNodeByCode(code)
     if not node:
@@ -83,7 +87,7 @@ def svgMode(request, code):
     }
     return render(request, 'display/svg_l.html', context)
 
-
+@cache_page(60 * 15)
 def subNode(request, name):
     data = models.getSubNodesByName(name)
     near_nodes = []
