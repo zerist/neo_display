@@ -1,10 +1,79 @@
 from django.db import models
 from py2neo import Graph, Node, Relationship, NodeMatcher,Database
+from neomodel import StructuredNode, StringProperty, IntegerProperty, DateProperty
 
 graph = Graph("http://localhost:7474", auth=("neo4j", "123456"))
 matcher = NodeMatcher(graph)
 db = Database("http://localhost:7474", user="neo4j", password="123456")
 # Create your models here.
+
+class AnimalNode(StructuredNode):
+    name = StringProperty(unique_index=True)
+    name_en = StringProperty(unique_index=True)
+    name_cn = StringProperty(unique_index=True)
+    belong = StringProperty()
+    alias = StringProperty()
+    position = StringProperty()
+    info = StringProperty()
+    code = StringProperty(unique_index=True)
+
+    class Meta:
+        app_label = 'animal'
+
+class PlantNode(StructuredNode):
+    name = StringProperty(unique_index=True)
+    name_cn = StringProperty(unique_index=True)
+    name_en = StringProperty(unique_index=True)
+    belong = StringProperty()
+    shape = StringProperty()
+    document = StringProperty()
+    position = StringProperty()
+    behavior = StringProperty()
+    environment = StringProperty()
+
+    class Meta:
+        app_label = 'plant'
+
+class RootNode(StructuredNode):
+    color = StringProperty()
+    old = StringProperty()
+    length = IntegerProperty()
+
+    class Meta:
+        app_label = 'root'
+
+class StemNode(StructuredNode):
+    color = StringProperty()
+    old = StringProperty()
+    length = IntegerProperty()
+
+    class Meta:
+        app_label = 'stem'
+
+class FlowerNode(StructuredNode):
+    color = StringProperty()
+    old = StringProperty()
+    time = DateProperty()
+
+    class Meta:
+        app_label = 'flower'
+
+class LeafNode(StructuredNode):
+    color = StringProperty()
+    old = StringProperty()
+    length = IntegerProperty()
+
+    class Meta:
+        app_label = 'leaf'
+
+class FruitNode(StructuredNode):
+    color = StringProperty()
+    old = StringProperty()
+    length = IntegerProperty()
+
+    class Meta:
+        app_label = 'fruit'
+
 def getDbConfig():
     return db
 
