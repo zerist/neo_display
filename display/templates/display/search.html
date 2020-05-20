@@ -28,15 +28,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% cache 500 nodes %}
                     {% for node in nodes  %}
                         <tr>
                             <th scope="row">{{ forloop.counter }}</th>
                             <td>{{ node.belong }}</td>
-                            <td><a href="{% url 'display:detail' node.name %}">{{ node.name }}</a></td>
+                            <td><a href="/display/search/"{{ node.name }}>{{ node.name }}</a></td>
                         </tr>
                     {% endfor %}
-                    {% endcache %}
                 </tbody>
             </table>
         </div>

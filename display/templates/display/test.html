@@ -31,11 +31,12 @@
                               <span class="caret"></span>
                               <span class="sr-only">Toggle Dropdown</span>
                           </button>
-                          <ul class="dropdown-menu">
-                              <li><a href="#">By Name</a></li>
-                              <li><a href="#">By Category</a></li>
-                              <li><a href="#">By info</a></li>
-                              <li><a href="#">By Source</a></li>
+                          <ul class="dropdown-menu" id="ul_box">
+                              <li class="li_sel" value="1"><a href="#">By Name</a></li>
+                              <li class="li_sel" value="2"><a href="#">By Leaf</a></li>
+                              <li class="li_sel" value="3"><a href="#">By Root</a></li>
+                              <li class="li_sel" value="4"><a href="#">By Fruit</a></li>
+                              <li class="li_sel" value="5"><a href="#">By Stem</a></li>
                           </ul>
                     </span>
                 </div>
@@ -81,10 +82,22 @@
 
 
     <script type="text/javascript">
+        var type = 1;
+
         $("#search_button").click(function () {
             var text = $("#search_input").val();
-            var dst_url = "/display/search/" + text;
-            window.location.href = dst_url
+            var dst_url = "/display/search/" + text + "?type=" + type;
+            window.location.href = dst_url;
+        });
+
+        $(".li_sel").click(function () {
+            var btn = $("#search_button");
+            var val = $(this).val();
+            var text = $(this).text();
+            var str = "Search!("+text+")";
+            btn.text(str);
+            type = val;
+            console.log(type);
         })
     </script>
 </div>

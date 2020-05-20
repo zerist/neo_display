@@ -6,15 +6,9 @@ from functools import wraps
 import cProfile
 #from line_profiler import LineProfiler
 import time
-
 from py2neo import Graph, Node, Relationship, NodeMatcher,Database
-def func_time(f):
-    """
-    简单记录执行时间
-    :param f:
-    :return:
-    """
 
+def func_time(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         start = time.time()
@@ -27,10 +21,6 @@ def func_time(f):
 
 
 def func_cprofile(f):
-    """
-    内建分析器
-    """
-
     @wraps(f)
     def wrapper(*args, **kwargs):
         profile = cProfile.Profile()
@@ -44,46 +34,6 @@ def func_cprofile(f):
 
     return wrapper
 
-
-#
-# try:
-#     from line_profiler import LineProfiler
-#
-#
-#     def func_line_time(follow=[]):
-#         """
-#         每行代码执行时间详细报告
-#         :param follow: 内部调用方法
-#         :return:
-#         """
-#         def decorate(func):
-#             @wraps(func)
-#             def profiled_func(*args, **kwargs):
-#                 try:
-#                     profiler = LineProfiler()
-#                     profiler.add_function(func)
-#                     for f in follow:
-#                         profiler.add_function(f)
-#                     profiler.enable_by_count()
-#                     return func(*args, **kwargs)
-#                 finally:
-#                     profiler.print_stats()
-#
-#             return profiled_func
-#
-#         return decorate
-
-# except ImportError:
-#     def func_line_time(follow=[]):
-#         "Helpful if you accidentally leave in production!"
-#         def decorate(func):
-#             @wraps(func)
-#             def nothing(*args, **kwargs):
-#                 return func(*args, **kwargs)
-#
-#             return nothing
-#
-#         return decorate
 
 graph = Graph("http://localhost:7474", auth=("neo4j", "123456"))
 matcher = NodeMatcher(graph)

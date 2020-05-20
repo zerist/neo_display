@@ -85,6 +85,19 @@ def searchNodesByName(name):
     data = matcher.match("plant").where("_.name=~'.*" + name +".*'")
     return data
 
+def searchNodesByLabel(type, old):
+    label = "leaf"
+    if type == "2":
+        label = "leaf"
+    elif type == "3":
+        label = "root"
+    elif type == "4":
+        label = "fruit"
+    elif type == "5":
+        label = "stem"
+    data = graph.run("match (n:plant)-[r:has]->(m:"+label+") where m.old contains '"+old+"' return n").data()
+    return data
+
 def searchNodeByCode(code):
     data = matcher.match("plant", name=code).first()
     return data

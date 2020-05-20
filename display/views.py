@@ -23,10 +23,18 @@ def test(request):
 
     return render(request, "display/test.html", context)
 
-@cache_page(60 * 15)
-@cache_control(private=True)
+# # @cache_page(60 * 15)
+# # @cache_control(private=True)
+@cache_page(0)
 def search(request, text):
+    type = request.GET.get("type")
     nodes = list(models.searchNodesByName(text))
+    if type != "1":
+        nodes = []
+        data = list(models.searchNodesByLabel(type, text))
+        for i in data:
+            nodes.append(i['n'])
+
     context = {
         "nodes": nodes
     }
